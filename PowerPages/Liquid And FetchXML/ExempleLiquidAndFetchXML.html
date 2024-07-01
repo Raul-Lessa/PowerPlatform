@@ -1,0 +1,245 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200&display=swap');
+  html, body {
+      height: 100%;
+  }
+  body {
+      display: grid;
+      background: #fff;
+      font-family: 'Manrope', sans-serif;
+  }
+  .mydiv {
+      margin-top: 50px;
+      margin-bottom: 50px;
+  }
+  .cross {
+      font-size: 10px;
+  }
+  .padding-0 {
+      padding-right: 5px;
+      padding-left: 5px;
+  }
+  .img-style {
+      margin-left: -11px;
+      box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+      max-width: 104% !important;
+  }
+  .m-t-20 {
+      margin-top: 20px;
+  }
+  .card_background {
+      background-color: #E0E0E0 !important;
+  }
+  .ribbon {
+      width: 150px;
+      height: 150px;
+      overflow: hidden;
+      position: absolute;
+  }
+  .ribbon span {
+      position: absolute;
+      display: block;
+      width: 34px;
+      border-radius: 50%;
+      padding: 8px 0;
+      background-color: #3498db;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, .1);
+      color: #fff;
+      font: 100 18px/1 'Lato', sans-serif;
+      text-shadow: 0 1px 1px rgba(0, 0, 0, .2);
+      text-transform: uppercase;
+      text-align: center;
+  }
+  .ribbon-top-right {
+      top: -10px;
+      right: -10px;
+  }
+  .ribbon-top-right::before,
+  .ribbon-top-right::after {
+      border-top-color: transparent;
+      border-right-color: transparent;
+  }
+  .ribbon-top-right::before {
+      top: 0;
+      left: 17px;
+  }
+  .ribbon-top-right::after {
+      bottom: 17px;
+      right: 0;
+  }
+  .sold_stars i {
+      color: orange;
+  }
+  .ribbon-top-right span {
+      right: 17px;
+      top: 17px;
+  }
+  div {
+      display: block;
+      position: relative;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+  }
+  .card_deals_featured {
+      width: 100%;
+  }
+  .card_deals {
+      width: 100%;
+      margin-right: 7%;
+      padding-top: 80px;
+      padding-left: 25px;
+      padding-right: 25px;
+      padding-bottom: 34px;
+      box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+      margin-top: 0px;
+      margin-bottom: 20px; /* Espaço entre os cards */
+  }
+  .card_deals_title {
+      position: absolute;
+      top: 10px;
+      left: 22px;
+      font-size: 18px;
+      font-weight: 500;
+      color: #000000;
+  }
+  .card_deals_slider_container {
+      width: 100%;
+  }
+  .card_deals_item {
+      width: 100% !important;
+  }
+  .card_deals_image {
+      width: 100%;
+  }
+  .card_deals_image img {
+      width: 100%;
+  }
+  .card_deals_content {
+      margin-top: 33px;
+  }
+  .card_deals_item_category a {
+      font-size: 14px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.5);
+  }
+  .card_deals_item_price_a {
+      font-size: 14px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.6);
+  }
+  .card_deals_item_price_a strike {
+      color: red;
+  }
+  .card_deals_item_name {
+      font-size: 24px;
+      font-weight: 400;
+      color: #000000;
+  }
+  .card_deals_item_price {
+      font-size: 24px;
+      font-weight: 500;
+      color: #6d6e73;
+  }
+  .available {
+      margin-top: 19px;
+  }
+  .available_title {
+      font-size: 16px;
+      color: rgba(0, 0, 0, 0.5);
+      font-weight: 400;
+  }
+  .available_title span {
+      font-weight: 700;
+  }
+  @media only screen and (max-width: 991px) {
+      .card_deals {
+          width: 100%;
+          margin-right: 0px;
+      }
+  }
+  @media only screen and (max-width: 575px) {
+      .card_deals {
+          padding-left: 15px;
+          padding-right: 15px;
+      }
+      .card_deals_title {
+          left: 15px;
+          font-size: 16px;
+      }
+      .card_deals_slider_nav_container {
+          right: 5px;
+      }
+      .card_deals_item_name,
+      .card_deals_item_price {
+          font-size: 20px;
+      }
+  }
+</style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    {% fetchxml resultProducts %}
+    <fetch>
+      <entity name='sample_product'>
+          <attribute name='sample_name' />
+          <attribute name='sample_price' />
+          <attribute name='sample_available' />
+          <attribute name='sample_ratings' />
+          <attribute name='entityimage_url' />
+          <attribute name='sample_category' />
+      </entity>
+    </fetch>
+    {% endfetchxml %}
+
+<div class="row sectionBlockLayout text-start" style="display: flex; flex-wrap: wrap; margin: 0px; min-height: auto; padding: 8px;">
+  <div class="container" style="padding: 0px; display: flex; flex-wrap: wrap;">
+    <div class="col-lg-12 columnBlockLayout" style="flex-grow: 1; display: flex; flex-direction: column; min-width: 300px;">
+      <div class="container mydiv">
+        <div class="row">
+          {% for product in resultProducts.results.entities %} 
+            <div class="col-md-4">
+                <div class="card_deals">
+                    <div class="card_deals_slider_container">
+                        <div class=" card_deals_item">
+                            <div class="card_deals_image"><img src='https://org20be958f.crm2.dynamics.com{{ product.entityimage_url }}' alt=""></div>
+                            <div class="card_deals_content">
+                                <div class="card_deals_info_line d-flex flex-row justify-content-start">
+                                    <div class="card_deals_item_category"><a href="#">{{ product.sample_category.Label }}</a></div>
+                                </div>
+                                <div class="card_deals_info_line d-flex flex-row justify-content-start">
+                                    <div class="card_deals_item_name"> {{ product.sample_name }}</div>
+                                    <div class="card_deals_item_price ml-auto">{{ product.sample_price | decimals: 2, "en-US" | prepend: "$"}}</div>
+                                </div>
+                                <div class="available">
+                                    <div class="available_line d-flex flex-row justify-content-start">
+                                        <div class="available_title">Available: <span>{{ product.sample_available }}</span></div>
+                                        <div class="sold_stars ml-auto"> 
+                                          {% assign num = product.sample_ratings  %}
+                                          {% assign range = (1..num) %}
+                                          {% for i in range %}
+                                          <i class="fa fa-star"></i>
+                                          {% endfor %}
+                                        </div>
+                                    </div>
+                                    <div class="available_bar"><span style="width:17%"></span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}         
+        </div>
+    </div>
+    </div>
+  </div>
+</div>
+
